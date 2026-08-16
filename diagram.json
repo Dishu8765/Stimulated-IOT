@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "author": "Dioshan",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-dht22", "id": "dht22", "top": -80, "left": 120, "attrs": {} },
+    { "type": "wokwi-led", "id": "led_status", "top": -40, "left": 260, "attrs": { "color": "green" } },
+    { "type": "wokwi-resistor", "id": "r_led", "top": -20, "left": 300, "attrs": { "value": "220" } },
+    { "type": "wokwi-pushbutton", "id": "btn_speed", "top": 60, "left": 260, "attrs": { "color": "blue" } },
+    { "type": "wokwi-pushbutton", "id": "btn_emergency", "top": 140, "left": 260, "attrs": { "color": "red" } }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+
+    [ "dht22:VCC", "esp:3V3", "red", [] ],
+    [ "dht22:GND", "esp:GND.1", "black", [] ],
+    [ "dht22:SDA", "esp:D15", "green", [] ],
+
+    [ "led_status:A", "r_led:1", "green", [] ],
+    [ "r_led:2", "esp:D2", "green", [] ],
+    [ "led_status:C", "esp:GND.2", "black", [] ],
+
+    [ "btn_speed:1.l", "esp:D4", "orange", [] ],
+    [ "btn_speed:2.l", "esp:GND.3", "black", [] ],
+
+    [ "btn_emergency:1.l", "esp:D5", "red", [] ],
+    [ "btn_emergency:2.l", "esp:GND.4", "black", [] ]
+  ]
+}
