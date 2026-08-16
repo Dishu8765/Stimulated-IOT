@@ -7,7 +7,7 @@ const cors = require('cors');
 const mqtt = require('mqtt');
 
 // ─── Config ──────────────────────────────────────────────────────────────────
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 8080;
 const MQTT_BROKER = process.env.MQTT_BROKER || 'mqtt://broker.hivemq.com';
 const MQTT_TOPIC = process.env.MQTT_TOPIC || 'silabs-prep/envmonitor/readings';
 const HISTORY_SIZE = parseInt(process.env.HISTORY_SIZE || '100', 10);
